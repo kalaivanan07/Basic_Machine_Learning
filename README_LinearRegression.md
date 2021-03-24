@@ -52,5 +52,4 @@ Step 3: Choose Design - > chart layouts, choose layout 9,  for linear regression
 Step 4 : The line can be used to predict the testing data. 
 
 The related files are : 
-Test_data.xlsx 
-linear_regression.py
+Test_data.xlsx, linear_regression.py
