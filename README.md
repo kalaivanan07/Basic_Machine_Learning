@@ -50,5 +50,3 @@ Step 1: write down values of X and Y (training data)
 Step 2: Select the data, and from menu, choose Insert -> Scatter 
 Step 3: Choose Design - > chart layouts, choose layout 9,  for linear regression. 
 Step 4 : The line can be used to predict the testing data. 
-
-kkll
