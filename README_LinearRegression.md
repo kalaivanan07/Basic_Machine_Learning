@@ -2,6 +2,8 @@
 	Linear regression:
 ----------------------------------------------------------
 
+The related files are : Test_data.xlsx, linear_regression.py
+
 Conclusion: 
 -----------
 Except for covariance method all other method's output are similar.  
