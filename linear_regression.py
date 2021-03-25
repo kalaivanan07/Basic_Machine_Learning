@@ -96,11 +96,11 @@ def gradient_descent(x,y):
 def pred_comparison(x,y):
 
     plt.scatter(x, y)
-    #plt.plot(x, blr_drv(x, y), color='red')
+    plt.plot(x, blr_drv(x, y), color='red')
     plt.plot(x, blr_crr_cff(x, y), color='black')
     plt.plot(x, blr_cov_var(x,y), color='blue')
-    #plt.plot(x, blr_sci(x,y), color='green')
-    #plt.plot(x, gradient_descent(x,y), color = 'yellow')
+    plt.plot(x, blr_sci(x,y), color='green')
+    plt.plot(x, gradient_descent(x,y), color = 'yellow')
     plt.show()
     
     # from this graph except for covariance graph all lines coincides
