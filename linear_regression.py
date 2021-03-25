@@ -47,6 +47,7 @@ def blr_crr_cff(x,y):
     
 def blr_cov_var(x,y):
     m = cov(x,y)[0,1] / std(x)**2
+    # m = (sum((x - mean(x))*(y - mean(y)))/std(x)**2)/len(x)
     print(cov(x,y)[0,1], std(x))
     b = mean(y) - m*mean(x)
     l_rsqrd = rsqrd(x,y, m, b)
