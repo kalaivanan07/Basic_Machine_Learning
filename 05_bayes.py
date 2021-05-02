@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
+""" 
 Created on Thu Apr 29 20:15:52 2021
 @author: kalaivanan
 Bayes algorithm - boundary between two distribution 
