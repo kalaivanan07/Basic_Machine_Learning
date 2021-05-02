@@ -55,7 +55,7 @@ def splitdataset(df):
     return (X, Y, X_train, X_test, y_train, y_test)
 
 # Function to perform training with giniIndex.
-def train_using_gini(X_train, X_test, y_train):
+def train_using_gini(X_train, X_test, y_train): 
   
     # Creating the classifier object
     clf_gini = DecisionTreeClassifier(criterion = "gini",
