@@ -1,3 +1,68 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 26 20:06:27 2021
+@author: kalaivanan
+
+----------------------------------------------------------
+	Linear regression:
+----------------------------------------------------------
+
+Conclusion: 
+-----------
+Except for covariance method all other method's output are similar.  
+std is calculated for "n" and variance is calculated for "n-1"
+And hence the difference in op of covariance
+
+Partial derivation of least squarred :
+--------------------------------------
+The derivation is available in Khan Academy -> Stats & Probability -> Linear Regression 
+The formula for finding optimal "m" and "b" is given. 
+Given "m", "b", and the testing data, y can be predicted.
+
+Correlation Coefficient:
+------------------------
+m = coefficient correlation *  (std(y)/ std(x))
+any best line passes through mean x and mean y. find b using this
+
+Covariance Method:
+-----------------
+m = covariance(x,x)/ (std(x) * std(x))
+any best line passes through mean x and mean y. find b using this
+
+Gradient Descent:
+-----------------
+1. Take derivative of loss function, w.r.t m and w.r.t b.
+2. find y prediction using above m and b (first iteration is assumption)
+3. find d_m and d_b using the derivative equations
+4. using learning rate and the above values, calculate new m and b
+5. repeate 2 to 4 until loss is minimum 
+
+Python Library:
+---------------
+Using Scikit Linear regression
+
+Efficiency of line:
+------------------
+r squared calculated in each method
+
+3D Analysis:
+------------
+Plot to analyse the gradient descent
+
+Excel:
+------
+Step 1: write down values of X and Y (training data)
+Step 2: Select the data, and from menu, choose Insert -> Scatter
+Step 3: Choose Design - > chart layouts, choose layout 9,  for linear regression.
+Step 4 : The line can be used to predict the testing data.
+
+pending:
+---------
+
+real time project uning multivariate linear regression using matrix :
+
+"""
+
 from math import sqrt
 from numpy import multiply 
 from numpy import mean
@@ -9,8 +74,8 @@ import matplotlib.pyplot as plt  # To visualize
 from sklearn.linear_model import LinearRegression
 import pandas as pd  # To read data
 
-# array([ 4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
-# array([ 4.5 ,  5.6 ,  7.6 ,  5.8 ,  7.  ,  8.75,  8.  ,  8.4 , 11.8 , 7.6 , 10. ])
+x =  array([ 4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
+y =  array([ 4.5 ,  5.6 ,  7.6 ,  5.8 ,  7.  ,  8.75,  8.  ,  8.4 , 11.8 , 7.6 , 10. ])
 # blr - bivariate linear regression 
 
 def rsqrd(x,y, m, b):
@@ -47,8 +112,8 @@ def blr_crr_cff(x,y):
     
 def blr_cov_var(x,y):
     m = cov(x,y)[0,1] / std(x)**2
-    # m = (sum((x - mean(x))*(y - mean(y)))/std(x)**2)/len(x)
-    print(cov(x,y)[0,1], std(x))
+    # m = (sum((x - mean(x))*(y - mean(y)))/std(x)**2)/(len(x)-1)
+    print(m, std(x))
     b = mean(y) - m*mean(x)
     l_rsqrd = rsqrd(x,y, m, b)
     
@@ -93,7 +158,7 @@ def gradient_descent(x,y):
     print('gradient_descent--> slope=%.3f y-intercept=%.3f lsqrd=%.3f' % (m, b, l_rsqrd))
     return(m*x + b)
 
-def pred_comparison(x,y):
+def main(x,y):
 
     plt.scatter(x, y)
     plt.plot(x, blr_drv(x, y), color='red')
@@ -102,7 +167,7 @@ def pred_comparison(x,y):
     plt.plot(x, blr_sci(x,y), color='green')
     plt.plot(x, gradient_descent(x,y), color = 'yellow')
     plt.show()
-    
+    gd_3d(x,y)
     # from this graph except for covariance graph all lines coincides
     # in python std is calculated for "n" and variance is calculated for "n-1"
     # using numpy and hence the difference 
@@ -131,9 +196,14 @@ def gd_3d(x,y):
         y_axis.append(b)
         z_axis.append(l_rsqrd)
 
-    print(x_axis)
-    print(y_axis)
-    print(z_axis)
+    #print(x_axis)
+    #print(y_axis)
+    #print(z_axis)
     
     ax = plt.axes(projection='3d')
     ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1)
+
+# Calling main function
+if __name__=="__main__":
+    main(x,y)    
+
