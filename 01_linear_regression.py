@@ -201,7 +201,7 @@ def gd_3d(x,y):
     #print(z_axis)
     
     ax = plt.axes(projection='3d')
-    ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1)
+    ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1) 
 
 # Calling main function
 if __name__=="__main__":
