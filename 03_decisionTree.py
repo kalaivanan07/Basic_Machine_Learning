@@ -31,7 +31,7 @@ def impData(file):
     print ("Dataset: ",df.head())
     return df
 
-# Function to split the dataset
+#  Function to split the dataset
 def splitdataset(df):
 
     # Separating the target variable
