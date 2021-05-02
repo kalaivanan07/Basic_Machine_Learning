@@ -4,6 +4,12 @@ Created on Fri Mar 26 20:06:27 2021
 
 @author: kalaivanan
 Decision tree algorithm 
+
+entropy - scikit
+Gini    - scikit 
+plot the ouput
+efficiency - confusion matrix 
+
 """
 
 import pandas as pd
