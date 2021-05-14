@@ -73,6 +73,7 @@ from scipy.stats import pearsonr
 import matplotlib.pyplot as plt  # To visualize
 from sklearn.linear_model import LinearRegression
 import pandas as pd  # To read data
+import time
 
 x =  array([ 4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
 y =  array([ 4.5 ,  5.6 ,  7.6 ,  5.8 ,  7.  ,  8.75,  8.  ,  8.4 , 11.8 , 7.6 , 10. ])
@@ -83,6 +84,7 @@ def rsqrd(x,y, m, b):
     #print(lse, std(y))
     #lse = (m*x + b)
     return ((lse/ std(y)))
+
 
 def blr_drv(x, y):
     # based on mathematical derivation - khan academy stats & prob
@@ -158,8 +160,16 @@ def gradient_descent(x,y):
     print('gradient_descent--> slope=%.3f y-intercept=%.3f lsqrd=%.3f' % (m, b, l_rsqrd))
     return(m*x + b)
 
-def main(x,y):
+def main(file):
 
+    xd = pd.read_csv(file)
+    
+    x = xd.iloc[:, 0]
+    y = xd.iloc[:, 1]
+
+    print(x)
+    print(y)
+    
     plt.scatter(x, y)
     plt.plot(x, blr_drv(x, y), color='red')
     plt.plot(x, blr_crr_cff(x, y), color='black')
@@ -196,14 +206,98 @@ def gd_3d(x,y):
         y_axis.append(b)
         z_axis.append(l_rsqrd)
 
-    #print(x_axis)
-    #print(y_axis)
-    #print(z_axis)
+    print(x_axis)
+    print(y_axis)
+    print(z_axis)
     
     ax = plt.axes(projection='3d')
-    ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1) 
+    ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1)
 
 # Calling main function
+'''
 if __name__=="__main__":
-    main(x,y)    
+    main(s,y)    
+'''
 
+def gd_3d(x,y):
+    
+    # 3D analysis of gradient descent of bivariate data
+    
+    m = 0
+    b = 0 
+    l_r = .01 
+    n = len(x) 
+    
+    x_axis = []
+    y_axis = []
+    z_axis = []
+    
+    oneSidem = []
+    oneSideg = [] 
+    previsousm = 99999
+    
+    for i in range(20):
+        #time.sleep(1)
+        '''
+        if i <= 30:
+            for j in range(50000000):
+                None
+        '''
+        y_pred = m*x + b 
+        d_m = -2/n*sum(x*(y-y_pred))
+        d_c = -2/n*sum(y-y_pred)
+        #print(d_m, d_c)
+        m = m - l_r*d_m
+        b = b - l_r*d_c
+        l_rsqrd = rsqrd(x,y, m, b)
+        
+        x_axis.append(m)
+        y_axis.append(b)
+        z_axis.append(l_rsqrd)
+
+        # one side descent
+        if m < previsousm:
+            previsousm = m
+            oneSideg.append(l_rsqrd)
+            oneSidem.append(m)
+        elif m >= previsousm:
+            previsousm = m
+        
+    print(oneSidem)
+    print(oneSideg)
+    oneSidem.sort()
+    plt.plot(oneSidem, oneSideg)
+    # one side descent         
+    
+    plt.plot(x_axis, z_axis)
+    #plt.plot(oneSidem, oneSideg)
+    
+    '''
+        x_axis.append(m)
+        y_axis.append(b)
+        z_axis.append(l_rsqrd)
+    '''    
+    ax = plt.axes(projection='3d')
+    ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1)
+    print('x-' + str(m) + 'y-' + str(b) + 'z-' + str(l_rsqrd) + '-i' + str(i))
+    plt.show()
+                    
+    '''
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        print(x_axis)
+        print(y_axis)
+        print(z_axis)
+        
+        ax = plt.axes(projection='3d')
+        ax.scatter(x_axis, y_axis, z_axis, c=z_axis, cmap='viridis', linewidth=1)
+    '''
+            
+    '''        
+    plt.scatter(range(1000), x_axis)
+    plt.show()
+    plt.scatter(range(1000), y_axis)
+    plt.show()
+    plt.scatter(range(1000), z_axis)
+    plt.show()
+    '''
