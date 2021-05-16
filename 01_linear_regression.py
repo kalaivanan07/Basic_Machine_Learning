@@ -184,7 +184,7 @@ def main(file):
     
 def gd_3d(x,y):
     
-    # 3D analysis of gradient descent of bivariate data
+    # 3D analysis of gradient descent of bivariate data 
     
     m = 0
     b = 0 
