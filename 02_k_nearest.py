@@ -28,7 +28,7 @@ def knearest(xf, yf, Nknn):
     xdf = pd.read_csv("E:\\Tech\\ML\\Data_Set\\" + xf)
     ydf = pd.read_csv("E:\\Tech\\ML\\Data_Set\\" + yf)
     pred_Copy = {eac:0 for eac in xdf[xdf.columns[-1:][0]].unique()}
-    #print(pred_Copy)
+    #print(pred_Copy )
     global error_rate_own
     error_rate_own = []
 
