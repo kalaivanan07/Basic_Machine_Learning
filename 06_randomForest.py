@@ -50,7 +50,7 @@ def ranForest3D(file):
         y_pred = regressor.predict(x_test[:, :-1])
         del(regressor)
         rs.append((y_pred/y_test))
-        #rs.append(list(range(125)))
+        #rs.append(list(range(125))) 
         print(i)
     y = np.array([list(range(len(x_test)))]*len(x_test))
     x = np.array([list(range(2025, 4525, 20))]*len(x_test)).T
