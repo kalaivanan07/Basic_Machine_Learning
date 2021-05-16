@@ -26,7 +26,7 @@ import numpy as np
 # Function importing Dataset
 def impData(file):
     df = pd.read_csv('E:\\Tech\\ML\\Data_Set\\'+file,  sep= ',', header = 1)
-    print ("Dataset Length: ", len(df))
+    print ("Dataset Length:  ", len(df))
     print ("Dataset Shape: ", df.shape)
     print ("Dataset: ",df.head())
     return df
