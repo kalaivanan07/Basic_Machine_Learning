@@ -29,7 +29,7 @@ def my_pdf(x_axis):
     return (y_ndis, mu, si)
 
 def nbayes(x1_axis, x2_axis):
-    # the above is simplified to below
+    # the above is simplified to below 
     # simplifed pdf formula to equate to two variables
     si1 = std(x1_axis)
     si2 = std(x2_axis)
