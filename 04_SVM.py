@@ -4,6 +4,8 @@ Created on Thu Apr 22 17:52:03 2021
  
 @author: kalaivanan
 """
+'''
+'''
 
 from sklearn.svm import SVC
 import numpy as np
